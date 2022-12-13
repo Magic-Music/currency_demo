@@ -5,6 +5,13 @@ namespace App\Resources;
 use App\Exceptions\UnknownCurrencyException;
 use App\Repositories\CurrencyRepository;
 
+/**
+ * Resources store blocks of related data,
+ * use in preference to an array
+ * They are data stores with getters and setters.
+ * The getters may include formatting
+ * No business logic should live in a resource
+ */
 class CurrencyResource
 {
     private float $amount;

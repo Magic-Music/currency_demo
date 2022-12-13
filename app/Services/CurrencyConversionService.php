@@ -12,13 +12,13 @@ class CurrencyConversionService
 
     public function getConvertedAmount(string $sourceCurrency, string $destinationCurrency, float $amount): float
     {
-        $sourceAmountInDollars = $amount * $this->getDollarAmount($sourceCurrency);
-        $converted = $sourceAmountInDollars / $this->getDollarAmount($destinationCurrency);
+        $sourceAmountInDollars = $amount * $this->getDollarConversionRate($sourceCurrency);
+        $converted = $sourceAmountInDollars / $this->getDollarConversionRate($destinationCurrency);
         return round($converted, 2);
     }
 
-    private function getDollarAmount(string $isoCOde): float
+    private function getDollarConversionRate(string $isoCOde): float
     {
-        return $this->currencyRepository->getDollarValue($isoCOde);
+        return $this->currencyRepository->getDollarConversionRate($isoCOde);
     }
 }

@@ -28,7 +28,7 @@ class CurrencyRepository
     {
         Currency::create([
             'iso_code'               => $isoCode,
-            'symbol'                => $symbol,
+            'symbol'                 => $symbol,
             'decimal_separator'      => $decimalSeparator,
             'thousands_separator'    => $thousandsSeparator,
             'symbol_before'          => $symbolBefore,
@@ -66,9 +66,10 @@ class CurrencyRepository
             ->value('symbol_before');
     }
 
-    public function getDollarValue(string $isoCode): float
+    public function getDollarConversionRate(string $isoCode): float
     {
         return Currency::where('iso_code', $isoCode)
             ->value('dollar_value');
     }
 }
+
